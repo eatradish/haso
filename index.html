@@ -79,6 +79,59 @@
     /* 鼠标移上去隐约有个亮块反馈 */
     transition: background-color 0.2s ease;
   }
+
+  /* 回到顶部按钮的固定悬浮样式（专为你的胶囊图片定制） */
+  .back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+
+    /* 核心修改：根据你的原图比例（2:1），设定完美的现代高宽 */
+    width: 80px;
+    /* 宽度 */
+    height: 40px;
+    /* 高度 */
+
+    /* 引入你的原图 */
+    background-image: url('images/回到顶部1.png');
+    /* ⚠️ 请确保图片放到了 images 文件夹，名字和这里一致 */
+    background-size: contain;
+    /* 让整张图片完美缩放填满格子，不裁剪、不拉伸 */
+    background-repeat: no-repeat;
+    /* 防止图片重复 */
+    background-position: center;
+    /* 居中对齐 */
+
+    /* 彻底删除了之前的 border-radius: 50%，保留图片原本完美的左圆角 */
+
+    /* 加一个精致轻薄的阴影，让长条按钮浮起来，更有质感 */
+    box-shadow: 0 4px 15px rgba(254, 197, 251, 0.4);
+
+    text-decoration: none;
+    z-index: 999;
+    cursor: pointer;
+
+    /* 隐藏与显示动画 */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  /* 悬浮交互：鼠标放上去时微微上浮，并且加大一点粉色霓虹高光 */
+  .back-to-top:hover {
+    transform: translateY(-4px);
+    /* 向上微动 4px */
+    box-shadow: 0 8px 20px rgba(254, 197, 251, 0.7);
+    /* 阴影变亮，像在发光 */
+    filter: brightness(1.05);
+    /* 鼠标移上去时，图片整体微微变亮一点点，互动感极强 */
+  }
+
+  /* 当页面下滑时，由 JS 加上这个类名来显示按钮 */
+  .back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
 </style>
 
 <body>
@@ -137,8 +190,9 @@
 
   <div id="关注我" class="image-container">
     <img src="images/wangye_08.jpg" alt="关注我">
-    <a class="hotspot" href="https://www.douyin.com/user/MS4wLjABAAAACU9koe7LBOQJ01iB4Tbe-5ZvnygyAOXioSVKC32qTUOaELwoSbPvPouVhBmlOQLD" target="_blank"
-      style="left: 40.5%; top: 5.5%; width: 17.2%; height: 38.7%;"></a>
+    <a class="hotspot"
+      href="https://www.douyin.com/user/MS4wLjABAAAACU9koe7LBOQJ01iB4Tbe-5ZvnygyAOXioSVKC32qTUOaELwoSbPvPouVhBmlOQLD"
+      target="_blank" style="left: 40.5%; top: 5.5%; width: 17.2%; height: 38.7%;"></a>
     <a class="hotspot" href="https://space.bilibili.com/3546669742295593?spm_id_from=333.337.0.0" target="_blank"
       style="left: 60.7%; top: 11.3%; width: 16.6%; height: 36.6%;"></a>
     <a class="hotspot" href="https://www.xiaohongshu.com/user/profile/67c8d990000000000e01f26d" target="_blank"
@@ -161,6 +215,31 @@
     <a class="hotspot" href="https://www.xiaohongshu.com/user/profile/67c8d990000000000e01f26d" target="_blank"
       style="left: 90.6%; top: 24.5%; width: 4.3%; height: 53.1%;"></a>
   </div>
+
+  <a href="#" id="backToTop" class="back-to-top" title="回到顶部"></a>
+
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+
+    // 监听网页滚动事件
+    window.addEventListener('scroll', () => {
+      // 当页面向下滚动超过 400 像素时，显示按钮；否则隐藏
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    // 点击按钮时的平滑滚动效果
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault(); // 阻止默认的链接跳转行为
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // 丝滑滚动回顶部
+      });
+    });
+  </script>
 
 </body>
 
