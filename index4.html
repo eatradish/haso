@@ -3,9 +3,31 @@
 <head>
 <meta charset="utf-8">
 <title>联系方式</title>
+<style>
+  /* 基础复位：消除浏览器默认边距，防止滚动条乱跑 */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fec5fb; /* 保持与主页一致的粉色背景，可根据需要修改 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 让图片在窗口中上下垂直居中 */
+  }
+
+  /* 现代自适应图片样式 */
+  .adaptive-img {
+    display: block;
+    width: 100%;       /* 宽度填满屏幕 */
+    max-width: 1920px; /* 最大不超过原图宽度，防止拉伸模糊 */
+    height: auto;      /* 高度等比例自动缩放 */
+  }
+</style>
 </head>
 
 <body>
-<img src="images/二级页面2.jpg" width="1920" height="1080" alt=""/>
+
+  <img class="adaptive-img" src="images/二级页面2.jpg" alt="联系方式"/>
+
 </body>
 </html>

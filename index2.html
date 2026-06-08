@@ -3,9 +3,28 @@
 <head>
 <meta charset="utf-8">
 <title>狐草haso的歌单</title>
+<style>
+  /* 基础复位，消除浏览器默认的边距 */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* 如果屏幕比例不符，上下或左右留黑边，可自行修改颜色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 让图片在窗口中垂直居中 */
+  }
+
+  .adaptive-img {
+    display: block;
+    width: 100%;       /* 宽度填满容器 */
+    max-width: 1920px; /* 最大不超过原图宽度，防止在大屏上变模糊 */
+    height: auto;      /* 高度等比例自适应 */
+  }
+</style>
 </head>
 
 <body>
-<img src="images/music.jpg" width="1920" height="1080" alt=""/>
+  <img class="adaptive-img" src="images/music.jpg" alt="狐草haso的歌单"/>
 </body>
 </html>
